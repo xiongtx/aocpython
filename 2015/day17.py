@@ -36,7 +36,7 @@ def container_combos(containers, amount):
 def num_min_combos(containers, amount):
     combos = container_combos(containers, amount)
     n = min(len(l) for l in combos)
-    return sum(1 for l in combos if len(l) == n)
+    return sum(len(l) == n for l in combos)
 
 
 if __name__ == '__main__':

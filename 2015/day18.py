@@ -19,13 +19,13 @@ def lights_on(grid, steps):
         for i in range(n):
             for j in range(n):
                 num_on = sum(
-                    1 for x, y in neighbors((i, j), n) if grid[x][y] == '#')
+                    grid[x][y] == '#' for x, y in neighbors((i, j), n))
                 if grid[i][j] == '#':
                     new_grid[i][j] = '#' if num_on in {2, 3} else '.'
                 else:
                     new_grid[i][j] = '#' if num_on == 3 else '.'
         grid = new_grid
-    return sum(1 for light in itertools.chain(*new_grid) if light == '#')
+    return sum(light == '#' for light in itertools.chain(*new_grid))
 
 
 # Part 2
@@ -43,14 +43,14 @@ def lights_on_corners(grid, steps):
                 if (i, j) in corners:
                     new_grid[i][j] = '#'
                 else:
-                    num_on = sum(1 for x, y in neighbors((i, j), n)
-                                 if grid[x][y] == '#')
+                    num_on = sum(
+                        grid[x][y] == '#' for x, y in neighbors((i, j), n))
                     if grid[i][j] == '#':
                         new_grid[i][j] = '#' if num_on in {2, 3} else '.'
                     else:
                         new_grid[i][j] = '#' if num_on == 3 else '.'
         grid = new_grid
-    return sum(1 for light in itertools.chain(*new_grid) if light == '#')
+    return sum(light == '#' for light in itertools.chain(*new_grid))
 
 
 if __name__ == '__main__':

@@ -11,8 +11,8 @@ def times(s, n):
 
 
 def checksum(boxes):
-    num_twice = sum(1 for x in boxes if times(x, 2))
-    num_thrice = sum(1 for x in boxes if times(x, 3))
+    num_twice = sum(times(x, 2) for x in boxes)
+    num_thrice = sum(times(x, 3) for x in boxes)
     return num_twice * num_thrice
 
 

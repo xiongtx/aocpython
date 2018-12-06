@@ -15,7 +15,7 @@ def overlapped_area(claims):
         for i in range(t, t + h):
             for j in range(l, l + w):
                 grid[i][j] += 1
-    return sum(1 for l in grid for x in l if x > 1)
+    return sum(x > 1 for l in grid for x in l)
 
 
 # Part 2
